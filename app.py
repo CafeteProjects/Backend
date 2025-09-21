@@ -7,10 +7,10 @@ app = Flask(__name__)
 CORS(app)  # erlaubt Flutter Zugriff von anderen Domains
 # MySQL-Verbindungsdaten, standen gott sei dank auf der Seite
 db_config = {
-    'host': 'ea5oe8.h.filess.io',       # dein Host
-    'user': 'cafete_topicglad',         # DB-Benutzer
-    'password': '15e8f9e8222cc351aa28ad15e3e46f8b98853c36',        # dein DB-Passwort
-    'database': 'cafete_topicglad',     # Name der DB
+    'host': 'HOST',       # dein Host
+    'user': 'USER',         # DB-Benutzer
+    'password': 'PASSWORD',        # dein DB-Passwort
+    'database': 'DATABASE',     # Name der DB
     'port': 61001                       # Port von Filess
 }
 # API-Endpunkt für Menü
