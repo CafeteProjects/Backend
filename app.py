@@ -1,6 +1,7 @@
 from flask import Flask, jsonify
 import mysql.connector
 from flask_cors import CORS
+import os
 
 app = Flask(__name__)
 CORS(app)  # erlaubt Flutter Zugriff von anderen Domains
@@ -42,8 +43,8 @@ def get_news():
     return jsonify(rows)
 
 
-if __name__ == '__main__':
-    # host=0.0.0.0 damit von außen erreichbar
-    app.run(debug=True, host='0.0.0.0', port=5000)
 
+if __name__ == '__main__':
+    port = int(os.environ.get("PORT", 5000))
+    app.run(debug=True, host='0.0.0.0', port=port)
 
