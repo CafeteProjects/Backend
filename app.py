@@ -11,7 +11,7 @@ db_config = {
     'user': os.environ.get('USER'),         # DB-Benutzer
     'password': os.environ.get('PASSWORD'),        # dein DB-Passwort
     'database': os.environ.get('DATABASE'),     # Name der DB
-    'port': 61001                       # Port von Filess
+    'port': 61001                       
 }
 # API-Endpunkt für Menü
 @app.route('/menu', methods=['GET'])
