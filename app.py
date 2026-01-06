@@ -43,6 +43,9 @@ def get_news():
     conn.close()
     return jsonify(rows)
 
+@app.route("/health")
+def health():
+    return {"status": "ok"}
 
 
 if __name__ == '__main__':
