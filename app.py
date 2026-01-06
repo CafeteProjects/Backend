@@ -11,7 +11,7 @@ db_config = {
     'user': os.environ.get('DB_USER'),
     'password': os.environ.get('DB_PASSWORD'),
     'database': os.environ.get('DB_NAME'),
-    'port': 61001
+    'port': 3306
 }
 
 # API-Endpunkt für Menü
