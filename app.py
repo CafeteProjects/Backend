@@ -7,12 +7,13 @@ app = Flask(__name__)
 CORS(app)  # erlaubt Flutter Zugriff von anderen Domains
 # MySQL-Verbindungsdaten, standen gott sei dank auf der Seite
 db_config = {
-    'host': os.environ.get('HOST'),       # dein Host
-    'user': os.environ.get('USER'),         # DB-Benutzer
-    'password': os.environ.get('PASSWORD'),        # dein DB-Passwort
-    'database': os.environ.get('DATABASE'),     # Name der DB
-    'port': 61001                       
+    'host': os.environ.get('DB_HOST'),
+    'user': os.environ.get('DB_USER'),
+    'password': os.environ.get('DB_PASSWORD'),
+    'database': os.environ.get('DB_NAME'),
+    'port': int(os.environ.get('DB_PORT', 3306))
 }
+
 # API-Endpunkt für Menü
 @app.route('/menu', methods=['GET'])
 def get_menu():
