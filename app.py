@@ -33,6 +33,15 @@ def get_active():
     cursor.close()
     conn.close()
     return jsonify(rows)
+@app.route('/about', methods=['GET'])
+def get_aboutus():
+    conn = mysql.connector.connect(**db_config)
+    cursor = conn.cursor(dictionary=True)
+    cursor.execute("SELECT title, content FROM active")  # SQL-Query
+    rows = cursor.fetchall()                     # Ergebnis korrekt zuweisen
+    cursor.close()
+    conn.close()
+    return jsonify(rows)
 @app.route('/news', methods=['GET'])
 def get_news():
     conn = mysql.connector.connect(**db_config)
