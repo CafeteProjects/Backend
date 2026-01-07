@@ -41,7 +41,9 @@ def get_aboutus():
     rows = cursor.fetchall()                     # Ergebnis korrekt zuweisen
     cursor.close()
     conn.close()
-    return jsonify(rows)
+    if row is None:
+        return jsonify({"about": ""})
+    return jsonify({"about": row["content"]})
 @app.route('/news', methods=['GET'])
 def get_news():
     conn = mysql.connector.connect(**db_config)
