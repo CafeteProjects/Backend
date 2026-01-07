@@ -28,15 +28,21 @@ def get_menu():
 
 @app.route('/about', methods=['GET'])
 def get_aboutus():
-    conn = mysql.connector.connect(**db_config)
-    cursor = conn.cursor(dictionary=True)
-    cursor.execute("SELECT content FROM about")  # SQL-Query
-    rows = cursor.fetchall()                     # Ergebnis korrekt zuweisen
-    cursor.close()
-    conn.close()
-    if row is None:
-        return jsonify({"about": ""})
-    return jsonify({"about": row["content"]})
+    try:
+        conn = mysql.connector.connect(**db_config)
+        cursor = conn.cursor(dictionary=True)
+        cursor.execute("SELECT content FROM about WHERE id = 1")
+        row = cursor.fetchone()
+        cursor.close()
+        conn.close()
+
+        if row is None:
+            return jsonify({"about": ""})
+        return jsonify({"about": row["content"]})
+
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
     
 @app.route('/news', methods=['GET'])
 def get_news():
