@@ -24,22 +24,7 @@ def get_menu():
     cursor.close()
     conn.close()
     return jsonify(rows)  # liefert JSON zurück
-@app.route('/about', methods=['GET'])
-def get_aboutus():
-    try:
-        conn = mysql.connector.connect(**db_config)
-        cursor = conn.cursor(dictionary=True)
-        cursor.execute("SELECT content FROM about WHERE id = 1")
-        row = cursor.fetchone()
-        cursor.close()
-        conn.close()
 
-        if row is None:
-            return jsonify({"about": ""})
-        return jsonify({"about": row["content"]})
-    except Exception as e:
-        # Fehler ausgeben statt nur 500
-        return jsonify({"error": str(e)}), 500
 
 @app.route('/about', methods=['GET'])
 def get_aboutus():
@@ -52,6 +37,7 @@ def get_aboutus():
     if row is None:
         return jsonify({"about": ""})
     return jsonify({"about": row["content"]})
+    
 @app.route('/news', methods=['GET'])
 def get_news():
     conn = mysql.connector.connect(**db_config)
