@@ -14,6 +14,15 @@ db_config = {
     'port': 3306
 }
 
+@app.route('/active', methods=['GET'])
+def get_active():
+    conn = mysql.connector.connect(**db_config)
+    cursor = conn.cursor(dictionary=True)
+    cursor.execute("SELECT active FROM active")  # SQL-Query
+    rows = cursor.fetchall()                     # Ergebnis korrekt zuweisen
+    cursor.close()
+    conn.close()
+    return jsonify(rows)
 # API-Endpunkt für Menü
 @app.route('/menu', methods=['GET'])
 def get_menu():
