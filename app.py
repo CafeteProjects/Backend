@@ -37,7 +37,7 @@ def get_active():
 def get_aboutus():
     conn = mysql.connector.connect(**db_config)
     cursor = conn.cursor(dictionary=True)
-    cursor.execute("SELECT content FROM active")  # SQL-Query
+    cursor.execute("SELECT content FROM about")  # SQL-Query
     rows = cursor.fetchall()                     # Ergebnis korrekt zuweisen
     cursor.close()
     conn.close()
